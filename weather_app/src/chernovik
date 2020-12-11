@@ -1,0 +1,17 @@
+StringBuffer content = new StringBuffer();
+
+        try {
+            URL url = new URL(urlAddress);
+            URLConnection urlConn = url.openConnection();
+
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConn.getInputStream()));
+            String line;
+
+            while((line = bufferedReader.readLine()) != null) {
+                content.append(line + "\n");
+            }
+            bufferedReader.close();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        return content.toString();
